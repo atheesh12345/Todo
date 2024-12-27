@@ -7,11 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="box">1</div>
-        <div class="box">2</div>
-        <div class="box">3</div>
-        <div class="box">4</div>
+    <div id="main-container">
+        <div class="header">
+            <h1>Expense calculator</h1>
+            <p id="balance"></p>
+        </div>
+        <form id="task-form">
+            <label for="title">Add new transaction</label>
+            <input id="title" type="text" placeholder="Enter your transaction">
+            <input id="amount" type="number" placeholder="Enter the amount">
+            <select id="exp-type" name="Expense type" required>
+                <option value="" disabled selected>Select type on transaction</option>
+                <option>Income</option>
+                <option>Expense</option>
+            </select>
+            <button id="submit">Add</button>
+        </form>
+        <div id="filters">
+            <button id="all">All</button>
+            <button id="income">Income</button>
+            <button i="expense">Expense</button>
+        </div>
+        <div id="list"></div>
     </div>
     <script src="script.js"></script>
 </body>
