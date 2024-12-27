@@ -1,7 +1,51 @@
-body{
-    background-color: aqua;
+#main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    padding-top: 5rem;
 }
 
-.box{
-    background-color:red ;
+#task-form{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    border: none;
+}
+button{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: green;
+    color: white;
+}
+input{
+   padding: 5px;
+   border-radius: 5px;
+   border: 2px solid rgb(231, 140, 20);
+}
+label{
+    padding: 10px;
+   border-radius: 5px;
+  
+   font-weight: bold;
+   background-color: rgb(231, 140, 20);
+}
+
+select{
+    padding: 5px;
+   border-radius: 5px;
+   border: 2px solid rgb(231, 140, 20);
+}
+
+#list{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
