@@ -4,7 +4,34 @@
     align-items: center;
     flex-direction: column;
     gap: 3rem;
-    padding-top: 5rem;
+    padding-top: 5rem; 
+                                                                                                                                                                                                                            
+}
+
+.objects{
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+    align-items: start;
+    flex-direction: row;
+}
+
+.header{
+    text-align: center;
+    padding: 10px;
+}
+
+
+.content{
+    width: auto;
+    
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: aliceblue;
 }
 
 #task-form{
@@ -16,13 +43,22 @@
     gap: 1rem;
     border: none;
 }
-button{
+#filters button{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: violet;
+    color: white;
+}
+
+#submit{
     padding: 10px;
     border-radius: 5px;
     border: none;
     background-color: green;
     color: white;
 }
+
 input{
    padding: 5px;
    border-radius: 5px;
@@ -45,7 +81,44 @@ select{
 #list{
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
+}
+
+button{
+    width: fit-content;
+    padding: 2px;
+    border-radius: 5;
+
+}
+
+.trans{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    padding-top: 5px;
+    height: 30px;
+    border: 1px solid black;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+#income-only{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    padding-top: 5px;
+    height: 30px;
+    border: 1px solid black;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.hide{
+    display:none !important;
 }
