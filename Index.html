@@ -7,31 +7,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="main-container">
-        <div class="header">
-            <h1>Expense calculator</h1>
-            <p id="balance"></p>
+    <div class="header">
+        <h1>Expense calculator</h1>
+        <p id="balance"></p>
+    </div>
+    <div class="objects">
+        <div id="main-container">
+            <form id="task-form">
+                <label for="title">Add new transaction</label>
+                <input id="title" type="text" placeholder="Enter your transaction">
+                <input id="amount" type="number" placeholder="Enter the amount">
+                <select id="exp-type" name="Expense type" required>
+                    <option value="" disabled selected>Select type on transaction</option>
+                    <option>Income</option>
+                    <option>Expense</option>
+                </select>
+                 <button id="submit">Add</button>
+            </form>
         </div>
-        <form id="task-form">
-            <label for="title">Add new transaction</label>
-            <input id="title" type="text" placeholder="Enter your transaction">
-            <input id="amount" type="number" placeholder="Enter the amount">
-            <select id="exp-type" name="Expense type" required>
-                <option value="" disabled selected>Select type on transaction</option>
-                <option>Income</option>
-                <option>Expense</option>
-            </select>
-            <button id="submit">Add</button>
-        </form>
-        <div id="filters">
-            <button id="all">All</button>
-            <button id="income">Income</button>
-            <button id="expense">Expense</button>
-        </div>
-        <div id="list">
-            <h1>Transaction details</h1>
+        <div class="content">
+            <h1 id="balance"></h1>
+            <div id="filters">
+                <button id="all">All</button>
+                <button id="income">Income</button>
+                <button id="expense">Expense</button>
+            </div>
+            <div id="list">
+                
+            </div>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
