@@ -24,7 +24,7 @@
 
 .content{
     width: auto;
-    
+    gap: 2rem;
     margin: 0;
     padding: 2rem;
     display: flex;
@@ -101,7 +101,8 @@ button{
     align-items: center;
     padding-top: 5px;
     height: 30px;
-    border: 1px solid black;
+    width: 25rem;
+    background-color: rgb(231, 140, 20);
     padding: 15px;
     margin-top: 5px;
 }
@@ -114,7 +115,20 @@ button{
     align-items: center;
     padding-top: 5px;
     height: 30px;
-    border: 1px solid black;
+    
+    padding: 15px;
+    margin-top: 5px;
+}
+
+#expense-only{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    padding-top: 5px;
+    height: 30px;
+    
     padding: 15px;
     margin-top: 5px;
 }
