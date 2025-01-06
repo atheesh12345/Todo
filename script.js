@@ -1,7 +1,7 @@
 let tasks = [];
 let expense = [];
 let Income = [];
-let allTrans = [];
+
 
 let taskform = document.getElementById("task-form");
 let tasklist = document.getElementById("list");
@@ -9,7 +9,8 @@ let balance = document.getElementById("balance");
 let allbtn = document.getElementById("all");
 let incomebtn = document.getElementById("income");
 let expensebtn = document.getElementById("expense");
-
+let totalIncome = document.getElementById("total-income");
+let totalExpense = document.getElementById("total-expense");
 
 
 taskform.addEventListener("submit", (event) => {
@@ -18,22 +19,27 @@ taskform.addEventListener("submit", (event) => {
     let amount = document.getElementById("amount").value;
     let transType = document.getElementById("exp-type").value;
     const newTask = {id: Date.now(), title, amount, transType, completed:false}
-    expenseAdd(transType,newTask);
+    
     addNewtask(newTask);
     balanceCalculator();
-    //taskform.reset();
+    taskform.reset();
+    
+    console.log("all", tasks);
 })
 
 function addNewtask(task){
     tasks.push(task);
     fetchTask();
+    filterincome(task);
 }
 
 
 function rendertask(task){
     const taskele =document.createElement("div");
     taskele.innerHTML =`<div class="trans">
-    <h3>${task.title} ${task.amount}</h3>
+    <h3>${task.title}</h3>
+    <h3>${task.amount}</h3>
+    <h3>${task.transType}</h3>
     <button onclick="editTask(${task.id})">Edit</button>
     <button onclick="deleteTask(${task.id})">Delete</button>
     </div>`;
@@ -41,70 +47,80 @@ function rendertask(task){
 }
 
 
-
-function filter(task){
-   let Incometasks = tasks.find((task) => task.transType === "Income")
-    if(Incometasks){
-        const incomeele =document.createElement("div");
-        incomeele.innerHTML =`<div id="income-only" class="hide">
-        <h3>${task.title} ${task.amount}</h3>
-        <button onclick="editTask(${task.id})">Edit</button>
-        <button onclick="deleteTask(${task.id})">Delete</button>
-        </div>`;
-        tasklist.appendChild(incomeele);
+function filterincome(task){
+ 
+    if(task.transType == "Income"){
+       Income.push(task);
     }
-
     else{
-       
+        expense.push(task);
     }
 }
-
-allbtn.addEventListener("click", ()=>{
-    let incomeOnly = document.getElementById("income-only");
-   incomeOnly.classList.remove("hide");
-})
-
-function expenseAdd(value,task){
-    allTrans.push(+task.amount)
-    if(value =="Income"){
-        Income.push(+task.amount);
-    }else{
-        expense.push(+task.amount);
-    }
-} 
 
 
 function fetchTask(){
     tasklist.innerHTML="";
     tasks.forEach((task) =>{
-        rendertask(task)
-        filter(task);
+        rendertask(task);
+    })
+}
+
+function fetchIncomeTask(){
+    tasklist.innerHTML="";
+    Income.forEach((task) =>{
+        rendertask(task);
+    })
+}
+
+function fetchexpenseTask(){
+    tasklist.innerHTML="";
+    expense.forEach((task) =>{
+        rendertask(task);
     })
 }
 
 
+allbtn.addEventListener("click", ()=>{
+    fetchTask();
+})
+
+incomebtn.addEventListener("click", ()=>{
+    fetchIncomeTask();
+})
+
+expensebtn.addEventListener("click", ()=>{
+    fetchexpenseTask();
+})
+
 function deleteTask(id) {
     tasks = tasks.filter((task) => task.id != id);
+    Income = Income.filter((task) => task.id != id);
+    expense = expense.filter((task) => task.id != id);
     fetchTask();
+    balanceCalculator();
   };
+
+
 
 function editTask(id) {
     const task = tasks.find((task) => task.id === id);
     document.getElementById("title").value = task.title;
     document.getElementById("amount").value = task.amount;
     deleteTask(id);
-  }
+  };
+
 
 function balanceCalculator(){
     let incomeAmount = +0;
     let expenceAmount = +0;
     for(i=0; i<Income.length; i++){
-         incomeAmount = parseInt(incomeAmount + Income[i]);
+         incomeAmount = parseInt(incomeAmount + parseInt(Income[i].amount));
         }
     for(j=0; j<expense.length; j++){
-        expenceAmount = parseInt(expenceAmount + expense[j]);
+        expenceAmount = parseInt(expenceAmount + parseInt(expense[j].amount));
         }
  totalamount = incomeAmount - expenceAmount;
  balance.innerText = `Available balance ${totalamount}`;
-
+ totalIncome.innerText = `Total Income ${incomeAmount}`;
+ totalExpense.innerText = `Total Expense ${expenceAmount}`;
 }
