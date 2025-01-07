@@ -11,7 +11,7 @@ let incomebtn = document.getElementById("income");
 let expensebtn = document.getElementById("expense");
 let totalIncome = document.getElementById("total-income");
 let totalExpense = document.getElementById("total-expense");
-
+let status = document.getElementById("status");
 
 taskform.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -19,12 +19,13 @@ taskform.addEventListener("submit", (event) => {
     let amount = document.getElementById("amount").value;
     let transType = document.getElementById("exp-type").value;
     const newTask = {id: Date.now(), title, amount, transType, completed:false}
-    
     addNewtask(newTask);
     balanceCalculator();
+    status.classList.add("hide");
     taskform.reset();
-    
-    console.log("all", tasks);
+    console.log(tasks);
+    console.log(Income);
+    console.log(expense);
 })
 
 function addNewtask(task){
@@ -48,7 +49,6 @@ function rendertask(task){
 
 
 function filterincome(task){
- 
     if(task.transType == "Income"){
        Income.push(task);
     }
